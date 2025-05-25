@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeleteOccurrenceService {
+public class AdminDeleteOccurrenceService {
 
     @Autowired
     private OccurrenceRepository occurrenceRepository;

@@ -5,19 +5,27 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface OccurrenceRepository extends JpaRepository<Occurrence, Long> {
-    // Buscar por categoria, se desejar
-    List<Occurrence> findByCategory(String category);
+    // Para CIDADÃO: buscar ocorrências do próprio usuário
+    List<Occurrence> findAllByUserId(Long userId);
 
-    // Buscar por usuário
-    List<Occurrence> findByUserId(Long userId);
+    // Para CIDADÃO: buscar ocorrência específica do próprio usuário
+    Occurrence findByIdAndUserId(Long occurrenceId, Long userId);
 
-    //Buscar por endereço
+    // Para CIDADÃO: validação de duplicidade em 24h
+    boolean existsByAddressAndDescriptionAndCreatedAtAfter(String address, String description, LocalDateTime after);
+
+    // Para AGENTE/ADMIN: buscar por endereço
     List<Occurrence> findByAddress(String address);
 
-    // Regra de negócio: não pode haver duas ocorrências idênticas (mesmo endereço + mesma descrição) em menos de 24h
-    boolean existsByAddressAndDescriptionAndCreatedAtAfter(
-            String address, String description, LocalDateTime after
-    );
+    // Para AGENTE/ADMIN: buscar por categoria
+    List<Occurrence> findByCategory(String category);
+
+    // (Opcional) Buscar por status
+    List<Occurrence> findByStatus(String status);
+
+    // (Opcional) Filtros combinados
+    List<Occurrence> findByCategoryAndStatus(String category, String status);
 }

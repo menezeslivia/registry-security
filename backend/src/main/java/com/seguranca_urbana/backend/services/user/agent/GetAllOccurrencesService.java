@@ -1,4 +1,4 @@
-package com.seguranca_urbana.backend.services.user.admin;
+package com.seguranca_urbana.backend.services.user.agent;
 
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceResponseDTO;
 import com.seguranca_urbana.backend.repositorys.OccurrenceRepository;
@@ -13,16 +13,15 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetOccurrencesByAddressService {
+public class GetAllOccurrencesService {
 
     @Autowired
     private OccurrenceRepository occurrenceRepository;
     @Autowired
     private OccurrenceDTOMapperService occurrenceDTOMapperService;
 
-    public List<OccurrenceResponseDTO> execute(String address) {
-        return occurrenceRepository.findByAddress(address)
-                .stream()
+    public List<OccurrenceResponseDTO> execute() {
+        return occurrenceRepository.findAll().stream()
                 .map(occurrenceDTOMapperService::toDTO)
                 .toList();
     }

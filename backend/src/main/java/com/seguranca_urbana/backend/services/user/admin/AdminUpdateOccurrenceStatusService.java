@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateOccurrenceService {
+public class AdminUpdateOccurrenceStatusService {
 
     @Autowired
     private OccurrenceRepository occurrenceRepository;
@@ -24,7 +24,10 @@ public class UpdateOccurrenceService {
     public OccurrenceResponseDTO execute(Long id, OccurrenceUpdateDTO dto) {
         Occurrence occurrence = occurrenceRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Occurrence not found"));
-        occurrence.update(dto);
+        // Atualiza apenas o status (mantendo outros campos inalterados)
+        if (dto.status() != null) {
+            occurrence.setStatus(dto.status());
+        }
         occurrenceRepository.save(occurrence);
         return occurrenceDTOMapperService.toDTO(occurrence);
     }

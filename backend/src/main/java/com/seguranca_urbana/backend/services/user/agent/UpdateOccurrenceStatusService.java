@@ -1,4 +1,4 @@
-package com.seguranca_urbana.backend.services.user.admin;
+package com.seguranca_urbana.backend.services.user.agent;
 
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceResponseDTO;
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceUpdateDTO;
@@ -24,7 +24,7 @@ public class UpdateOccurrenceStatusService {
     public OccurrenceResponseDTO execute(Long id, OccurrenceUpdateDTO dto) {
         Occurrence occurrence = occurrenceRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Occurrence not found"));
-        // Atualiza apenas o status (mantendo outros campos inalterados)
+        // Só atualiza o status, mantendo outros campos inalterados
         if (dto.status() != null) {
             occurrence.setStatus(dto.status());
         }

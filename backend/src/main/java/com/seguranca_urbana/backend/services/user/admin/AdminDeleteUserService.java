@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeleteUserService {
+public class AdminDeleteUserService {
 
     @Autowired
     private UserRepository userRepository;

@@ -10,6 +10,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "tb_occurrence")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Occurrence {
     @Id
@@ -50,6 +51,6 @@ public class Occurrence {
             updateAction.run();
         }
     }
-}
+
 
 }

@@ -9,6 +9,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
+@Table(name = "tb_user")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class User {
     @Id
@@ -21,10 +22,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Occurrence> occurrences;
 
 
