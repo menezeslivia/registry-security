@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody as SwaggerRequestBody;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -48,7 +48,7 @@ public class AdminUserController {
     @Operation(
         summary = "Criar novo usuário",
         description = "O administrador pode criar um novo usuário do sistema.",
-        requestBody = @SwaggerRequestBody(
+        requestBody = @RequestBody(
             required = true,
             content = @Content(
                 mediaType = "application/json",
@@ -219,7 +219,7 @@ public class AdminUserController {
         parameters = {
             @Parameter(name = "id", description = "ID do usuário", required = true, example = "6")
         },
-        requestBody = @SwaggerRequestBody(
+        requestBody = @RequestBody(
             required = true,
             content = @Content(
                 mediaType = "application/json",
