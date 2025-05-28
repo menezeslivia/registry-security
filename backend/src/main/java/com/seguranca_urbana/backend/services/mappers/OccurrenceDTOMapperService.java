@@ -28,8 +28,8 @@ public class OccurrenceDTOMapperService {
     public OccurrenceResponseDTO toDTO(Occurrence occurrence) {
         return new OccurrenceResponseDTO(
                 occurrence.getId(),
-                occurrence.getCategory().getId(),           // retorna o id da categoria
-                occurrence.getCategory().getName(),         // retorna o nome da categoria
+                occurrence.getCategory().getId(),
+                occurrence.getCategory().getName(),
                 occurrence.getStatus().name(),
                 occurrence.getDescription(),
                 occurrence.getAddress(),

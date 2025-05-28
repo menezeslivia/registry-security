@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public record OccurrenceResponseDTO(
         Long id,
-        Long categoryId,    // novo campo
-        String categoryName,// novo campo
+        Long categoryId,
+        String categoryName,
         String status,
         String description,
         String address,

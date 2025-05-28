@@ -24,10 +24,8 @@ public interface OccurrenceRepository extends JpaRepository<Occurrence, Long> {
     // Para AGENTE/ADMIN: buscar por categoria
     List<Occurrence> findByCategory(OccurrenceCategory category);
 
-    // Buscar por nome da categoria
     List<Occurrence> findByCategoryName(String name);
 
-    // (Opcional) Buscar por status
     List<Occurrence> findByStatus(String status);
 
     // (Opcional) Filtros combinados

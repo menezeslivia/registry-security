@@ -24,7 +24,7 @@ public class UpdateOccurrenceStatusService {
     public OccurrenceResponseDTO execute(Long id, OccurrenceUpdateDTO dto) {
         Occurrence occurrence = occurrenceRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Occurrence not found"));
-        // Só atualiza o status, mantendo outros campos inalterados
+
         if (dto.status() != null) {
             occurrence.setStatus(dto.status());
         }

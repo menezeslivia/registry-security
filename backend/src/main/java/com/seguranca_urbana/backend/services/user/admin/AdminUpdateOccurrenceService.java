@@ -29,7 +29,6 @@ public class AdminUpdateOccurrenceService {
         Occurrence occurrence = occurrenceRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Occurrence not found"));
 
-        // Buscar a entidade Category apenas se o categoryId do DTO for informado
         OccurrenceCategory category = null;
         if (dto.categoryId() != null) {
             category = categoryRepository.findById(dto.categoryId())

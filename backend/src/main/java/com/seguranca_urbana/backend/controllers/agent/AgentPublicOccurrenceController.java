@@ -37,28 +37,24 @@ public class AgentPublicOccurrenceController {
     @GetMapping
     public ResponseEntity<List<OccurrenceResponseDTO>> getAll(HttpServletRequest request) {
         Long agentId = extractUserIdFromRequest(request);
-        // Se quiser usar o agentId para filtrar, passe para o service
         return ResponseEntity.ok(getAllOccurrencesService.execute());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<OccurrenceResponseDTO> getById(HttpServletRequest request, @PathVariable Long id) {
         Long agentId = extractUserIdFromRequest(request);
-        // Se quiser usar o agentId para filtrar, passe para o service
         return ResponseEntity.ok(getOccurrenceByIdService.execute(id));
     }
 
     @GetMapping("/address/{address}")
     public ResponseEntity<List<OccurrenceResponseDTO>> getByAddress(HttpServletRequest request, @PathVariable String address) {
         Long agentId = extractUserIdFromRequest(request);
-        // Se quiser usar o agentId para filtrar, passe para o service
         return ResponseEntity.ok(getOccurrencesByAddressService.execute(address));
     }
 
     @GetMapping("/category/{category}")
     public ResponseEntity<List<OccurrenceResponseDTO>> getByCategory(HttpServletRequest request, @PathVariable String category) {
         Long agentId = extractUserIdFromRequest(request);
-        // Se quiser usar o agentId para filtrar, passe para o service
         return ResponseEntity.ok(getOccurrencesByCategoryService.execute(category));
     }
 
@@ -69,7 +65,6 @@ public class AgentPublicOccurrenceController {
             @RequestBody OccurrenceUpdateDTO dto
     ) {
         Long agentId = extractUserIdFromRequest(request);
-        // Se quiser usar o agentId para auditar alterações, passe para o service
         return ResponseEntity.ok(updateOccurrenceStatusService.execute(id, dto));
     }
 }

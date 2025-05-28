@@ -45,7 +45,6 @@ public class AdminOccurrenceController {
             @RequestBody OccurrenceRequestDTO dto
     ) {
         Long adminId = extractAdminIdFromRequest(request);
-        // Se quiser auditar ou filtrar ações por adminId, basta passar para o service
         return ResponseEntity.status(HttpStatus.CREATED).body(createOccurrenceService.execute(userId, dto));
     }
 

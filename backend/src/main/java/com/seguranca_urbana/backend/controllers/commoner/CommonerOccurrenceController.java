@@ -34,7 +34,6 @@ public class CommonerOccurrenceController {
         return jwtService.extractUserId(token);
     }
 
-    // Criação de ocorrência pelo cidadão
     @PostMapping
     public ResponseEntity<OccurrenceResponseDTO> createOccurrence(
             HttpServletRequest request,
@@ -45,7 +44,6 @@ public class CommonerOccurrenceController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    // Listar todas as ocorrências do próprio cidadão
     @GetMapping
     public ResponseEntity<List<OccurrenceResponseDTO>> getOwnOccurrences(HttpServletRequest request) {
         Long userId = extractUserIdFromRequest(request);
@@ -53,7 +51,6 @@ public class CommonerOccurrenceController {
         return ResponseEntity.ok(occurrences);
     }
 
-    // Buscar ocorrência específica do próprio cidadão
     @GetMapping("/{occurrenceId}")
     public ResponseEntity<OccurrenceResponseDTO> getOwnOccurrenceById(
             HttpServletRequest request,

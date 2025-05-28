@@ -42,14 +42,12 @@ public class AdminUserController {
             @RequestBody UserRequestDTO dto
     ) {
         Long adminId = extractUserIdFromRequest(request);
-        // Se quiser auditar ou filtrar ações por adminId, basta passar para o service
         return ResponseEntity.status(HttpStatus.CREATED).body(createUserService.execute(dto));
     }
 
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> getAll(HttpServletRequest request) {
         Long adminId = extractUserIdFromRequest(request);
-        // Se quiser auditar ou filtrar ações por adminId, basta passar para o service
         return ResponseEntity.ok(adminGetAllUsersService.execute());
     }
 

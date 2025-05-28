@@ -26,7 +26,7 @@ public class WebSecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> {
-                    // Endpoints públicos (ajuste conforme necessário)
+                    // Endpoints públicos
                     authorize.requestMatchers(HttpMethod.POST, "/auth/login", "/auth/register").permitAll();
                     authorize.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll();
 

@@ -13,7 +13,6 @@ import java.util.List;
 public class SimpleCORSFilter implements Filter {
 
     private final List<String> allowedOrigins = Arrays.asList(
-            "https://inovamed-sigma.vercel.app",
             "http://localhost:5173"
     );
 

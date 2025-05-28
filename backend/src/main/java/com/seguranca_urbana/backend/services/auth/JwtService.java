@@ -15,8 +15,7 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    // Troque esta chave por uma mais segura em produção! (pelo menos 256 bits)
-    private static final String SECRET_KEY = "um-segredo-muito-forte-que-ninguem-vai-saber-123456789123456789";
+    private static final String SECRET_KEY = "uma-senha-muito-forte-que-ninguem-vai-saber-123456789123456789";
     private static final long EXPIRATION_MS = 1000 * 60 * 60 * 24; // 24 horas
 
     private Key getSigningKey() {
