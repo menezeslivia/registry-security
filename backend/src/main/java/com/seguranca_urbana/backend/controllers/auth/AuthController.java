@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody as SwaggerRequestBody;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class AuthController {
     @Operation(
         summary = "Registrar novo usuário",
         description = "Realiza o cadastro de um novo usuário no sistema.",
-        requestBody = @SwaggerRequestBody(
+        requestBody = @RequestBody(
             required = true,
             content = @Content(
                 mediaType = "application/json",
@@ -79,7 +79,7 @@ public class AuthController {
     @Operation(
         summary = "Login de usuário",
         description = "Realiza o login do usuário no sistema.",
-        requestBody = @SwaggerRequestBody(
+        requestBody = @RequestBody(
             required = true,
             content = @Content(
                 mediaType = "application/json",
