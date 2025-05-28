@@ -1,7 +1,6 @@
 package com.seguranca_urbana.backend.models.occurrence;
 
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceUpdateDTO;
-import com.seguranca_urbana.backend.models.enums.OccurrenceCategory;
 import com.seguranca_urbana.backend.models.enums.OccurrenceStatus;
 import com.seguranca_urbana.backend.models.user.User;
 import jakarta.persistence.*;
@@ -21,7 +20,8 @@ public class Occurrence {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
     private OccurrenceCategory category;
 
     @Enumerated(EnumType.STRING)
@@ -39,13 +39,14 @@ public class Occurrence {
     private LocalDateTime createdAt;
 
 
-    public void update(OccurrenceUpdateDTO dto) {
-        updateField(() -> this.category = dto.category(), dto.category());
+    public void update(OccurrenceCategory category, OccurrenceUpdateDTO dto) {
+        updateField(() -> this.category = category, category);
         updateField(() -> this.status = dto.status(), dto.status());
         updateField(() -> this.description = dto.description(), dto.description());
         updateField(() -> this.address = dto.address(), dto.address());
         updateField(() -> this.photo = dto.photo(), dto.photo());
     }
+
     private <T> void updateField(Runnable updateAction, T newValue) {
         if (newValue != null) {
             updateAction.run();

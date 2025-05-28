@@ -1,6 +1,7 @@
 package com.seguranca_urbana.backend.repositorys;
 
 import com.seguranca_urbana.backend.models.occurrence.Occurrence;
+import com.seguranca_urbana.backend.models.occurrence.OccurrenceCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
@@ -21,11 +22,14 @@ public interface OccurrenceRepository extends JpaRepository<Occurrence, Long> {
     List<Occurrence> findByAddress(String address);
 
     // Para AGENTE/ADMIN: buscar por categoria
-    List<Occurrence> findByCategory(String category);
+    List<Occurrence> findByCategory(OccurrenceCategory category);
+
+    // Buscar por nome da categoria
+    List<Occurrence> findByCategoryName(String name);
 
     // (Opcional) Buscar por status
     List<Occurrence> findByStatus(String status);
 
     // (Opcional) Filtros combinados
-    List<Occurrence> findByCategoryAndStatus(String category, String status);
+    List<Occurrence> findByCategoryAndStatus(OccurrenceCategory category, String status);
 }

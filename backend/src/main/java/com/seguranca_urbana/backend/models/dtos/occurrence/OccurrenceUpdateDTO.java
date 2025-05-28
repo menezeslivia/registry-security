@@ -4,7 +4,7 @@ import com.seguranca_urbana.backend.models.enums.OccurrenceCategory;
 import com.seguranca_urbana.backend.models.enums.OccurrenceStatus;
 
 public record OccurrenceUpdateDTO(
-        OccurrenceCategory category,
+        Long categoryId,
         OccurrenceStatus status,
         String description,
         String address,

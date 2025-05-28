@@ -2,7 +2,7 @@ package com.seguranca_urbana.backend.controllers.agent;
 
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceResponseDTO;
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceUpdateDTO;
-import com.seguranca_urbana.backend.models.enums.OccurrenceCategory;
+import com.seguranca_urbana.backend.models.occurrence.OccurrenceCategory;
 import com.seguranca_urbana.backend.services.auth.JwtService;
 import com.seguranca_urbana.backend.services.user.agent.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -56,7 +56,7 @@ public class AgentPublicOccurrenceController {
     }
 
     @GetMapping("/category/{category}")
-    public ResponseEntity<List<OccurrenceResponseDTO>> getByCategory(HttpServletRequest request, @PathVariable OccurrenceCategory category) {
+    public ResponseEntity<List<OccurrenceResponseDTO>> getByCategory(HttpServletRequest request, @PathVariable String category) {
         Long agentId = extractUserIdFromRequest(request);
         // Se quiser usar o agentId para filtrar, passe para o service
         return ResponseEntity.ok(getOccurrencesByCategoryService.execute(category));
