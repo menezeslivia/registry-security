@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody as SwaggerRequestBody;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class AdminCategoryController {
     @Operation(
         summary = "Criar nova categoria de ocorrência",
         description = "Cria uma nova categoria de ocorrência urbana. Apenas administradores podem acessar.",
-        requestBody = @SwaggerRequestBody(
+        requestBody = @RequestBody(
             required = true,
             content = @Content(
                 mediaType = "application/json",
@@ -156,7 +156,7 @@ public class AdminCategoryController {
         parameters = {
             @Parameter(name = "id", description = "ID da categoria", required = true, example = "1")
         },
-        requestBody = @SwaggerRequestBody(
+        requestBody = @RequestBody(
             required = true,
             content = @Content(
                 mediaType = "application/json",
