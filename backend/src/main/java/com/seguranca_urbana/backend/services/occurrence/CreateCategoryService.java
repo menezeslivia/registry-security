@@ -1,13 +1,14 @@
 package com.seguranca_urbana.backend.services.occurrence;
 
-
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceCategoryRequestDTO;
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceCategoryResponseDTO;
 import com.seguranca_urbana.backend.models.occurrence.OccurrenceCategory;
 import com.seguranca_urbana.backend.repositorys.OccurrenceCategoryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class CreateCategoryService {
 
@@ -15,11 +16,18 @@ public class CreateCategoryService {
     private OccurrenceCategoryRepository categoryRepository;
 
     public OccurrenceCategoryResponseDTO execute(OccurrenceCategoryRequestDTO dto) {
+        log.info("Recebida solicitação para criar categoria: {}", dto.name());
+
         if (categoryRepository.existsByName(dto.name())) {
+            log.warn("Tentativa de criar categoria duplicada: {}", dto.name());
             throw new IllegalArgumentException("Categoria já existe.");
         }
+
         OccurrenceCategory category = new OccurrenceCategory(dto.name());
         categoryRepository.save(category);
+
+        log.info("Categoria criada com sucesso: ID={}, Nome={}", category.getId(), category.getName());
+
         return new OccurrenceCategoryResponseDTO(category.getId(), category.getName());
     }
 }
