@@ -116,12 +116,13 @@ src/
 
 ## 👥 Desenvolvedores
 
-| Nome                | GitHub                                               | E-mail                       |
-|---------------------|------------------------------------------------------|------------------------------|
-| Livia Menezes       | [@menezeslivia](https://github.com/menezeslivia)     | liviajmenezes23@gmail.com    |
-| Ystefani Gomes      | [@Ystefani-Gomes](https://github.com/Ystefani-Gomes) | ystefani231@gmail.com        |
-| Cleverson Fernando  | [@NandoVlr](https://github.com/NandoVlr)             | cleversonando@gmail.com      |
-
+| Nome                | GitHub                                               | E-mail                          |
+|---------------------|------------------------------------------------------|---------------------------------|
+| Livia Menezes       | [@menezeslivia](https://github.com/menezeslivia)     | liviajmenezes23@gmail.com       |
+| Ystefani Gomes      | [@Ystefani-Gomes](https://github.com/Ystefani-Gomes) | ystefani231@gmail.com           |
+| Cleverson Fernando  | [@NandoVlr](https://github.com/NandoVlr)             | cleversonando@gmail.com         |
+| Weslley Matheus     | [@w3sll3ym](https://github.com/w3sll3ym)             | wslleymatheusferreira@gmail.com |
+| Emily Lacerda       | [@Emily-Lacerda](https://github.com/Emily-Lacerda)   | emilyvr19@gmail.com             |
 ---
 
 > Projeto desenvolvido para fins acadêmicos/profissionais. Sinta-se livre para contribuir!
