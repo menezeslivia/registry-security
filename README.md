@@ -114,16 +114,13 @@ src/
 - JUnit (testes)
 - Docker (opcional)
 
-## 👥 Desenvolvedora
+## 👥 Desenvolvedores
 
-| Nome           | GitHub                                      | E-mail                       |
-|----------------|---------------------------------------------|------------------------------|
-| Livia Menezes  | [@menezeslivia](https://github.com/menezeslivia) | liviajmenezes23@gmail.com    |
-
-## 📫 Contato
-
-- **Email:** liviajmenezes23@gmail.com
-- **LinkedIn:** [Livia Menezes](https://www.linkedin.com/in/livia-menezes/)
+| Nome                | GitHub                                               | E-mail                       |
+|---------------------|------------------------------------------------------|------------------------------|
+| Livia Menezes       | [@menezeslivia](https://github.com/menezeslivia)     | liviajmenezes23@gmail.com    |
+| Ystefani Gomes      | [@Ystefani-Gomes](https://github.com/Ystefani-Gomes) | ystefani231@gmail.com        |
+| Cleverson Fernando  | [@NandoVlr](https://github.com/NandoVlr)             | cleversonando@gmail.com      |
 
 ---
 
