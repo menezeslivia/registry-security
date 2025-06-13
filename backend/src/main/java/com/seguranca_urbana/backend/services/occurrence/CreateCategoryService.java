@@ -16,14 +16,14 @@ public class CreateCategoryService {
     private OccurrenceCategoryRepository categoryRepository;
 
     public OccurrenceCategoryResponseDTO execute(OccurrenceCategoryRequestDTO dto) {
-        log.info("Recebida solicitação para criar categoria: {}", dto.name());
+        log.info("Recebida solicitação para criar categoria: {}", dto.getName());
 
-        if (categoryRepository.existsByName(dto.name())) {
-            log.warn("Tentativa de criar categoria duplicada: {}", dto.name());
+        if (categoryRepository.existsByName(dto.getName())) {
+            log.warn("Tentativa de criar categoria duplicada: {}", dto.getName());
             throw new IllegalArgumentException("Categoria já existe.");
         }
 
-        OccurrenceCategory category = new OccurrenceCategory(dto.name());
+        OccurrenceCategory category = new OccurrenceCategory(dto.getName());
         categoryRepository.save(category);
 
         log.info("Categoria criada com sucesso: ID={}, Nome={}", category.getId(), category.getName());

@@ -43,16 +43,16 @@ public class CommonerOccurrenceController {
     }
 
     @Operation(
-        summary = "Registrar nova ocorrência",
-        description = "Cadastra uma nova ocorrência urbana para o usuário autenticado.",
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = OccurrenceRequestDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de requisição",
-                    value = """
+            summary = "Registrar nova ocorrência",
+            description = "Cadastra uma nova ocorrência urbana para o usuário autenticado.",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = OccurrenceRequestDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de requisição",
+                                    value = """
                     {
                       "categoryId": 1,
                       "description": "Furto de bicicleta na praça central",
@@ -60,19 +60,19 @@ public class CommonerOccurrenceController {
                       "photo": null
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "201",
-                description = "Ocorrência criada com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Ocorrência criada com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 10,
                           "userId": 2,
@@ -81,16 +81,15 @@ public class CommonerOccurrenceController {
                           "status": "ABERTA",
                           "category": "FURTO",
                           "photoUrl": null,
-                          "createdAt": "2025-05-28T12:00:00",
-                          "updatedAt": null
+                          "createdAt": "2025-05-28T12:00:00"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @PostMapping
     public ResponseEntity<OccurrenceResponseDTO> createOccurrence(
@@ -103,18 +102,18 @@ public class CommonerOccurrenceController {
     }
 
     @Operation(
-        summary = "Listar ocorrências do próprio usuário",
-        description = "Retorna todas as ocorrências cadastradas pelo usuário autenticado.",
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Lista de ocorrências do usuário",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Listar ocorrências do próprio usuário",
+            description = "Retorna todas as ocorrências cadastradas pelo usuário autenticado.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de ocorrências do usuário",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         [
                           {
                             "id": 10,
@@ -124,17 +123,16 @@ public class CommonerOccurrenceController {
                             "status": "ABERTA",
                             "category": "FURTO",
                             "photoUrl": null,
-                            "createdAt": "2025-05-28T12:00:00",
-                            "updatedAt": null
+                            "createdAt": "2025-05-28T12:00:00"
                           }
                         ]
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping
     public ResponseEntity<List<OccurrenceResponseDTO>> getOwnOccurrences(
@@ -146,21 +144,21 @@ public class CommonerOccurrenceController {
     }
 
     @Operation(
-        summary = "Detalhar ocorrência do próprio usuário",
-        description = "Retorna os detalhes de uma ocorrência específica do usuário autenticado.",
-        parameters = {
-            @Parameter(name = "occurrenceId", description = "ID da ocorrência", required = true, example = "10")
-        },
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Detalhes da ocorrência",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Detalhar ocorrência do próprio usuário",
+            description = "Retorna os detalhes de uma ocorrência específica do usuário autenticado.",
+            parameters = {
+                    @Parameter(name = "occurrenceId", description = "ID da ocorrência", required = true, example = "10")
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Detalhes da ocorrência",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 10,
                           "userId": 2,
@@ -169,17 +167,16 @@ public class CommonerOccurrenceController {
                           "status": "ABERTA",
                           "category": "FURTO",
                           "photoUrl": null,
-                          "createdAt": "2025-05-28T12:00:00",
-                          "updatedAt": null
+                          "createdAt": "2025-05-28T12:00:00"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado"),
-            @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado"),
+                    @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada")
+            }
     )
     @GetMapping("/{occurrenceId}")
     public ResponseEntity<OccurrenceResponseDTO> getOwnOccurrenceById(

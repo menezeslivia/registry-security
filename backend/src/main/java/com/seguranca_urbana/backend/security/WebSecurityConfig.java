@@ -35,7 +35,7 @@ public class WebSecurityConfig {
                     authorize.requestMatchers(HttpMethod.POST, "/cidadao/occurrences/**").hasRole("CIDADAO");
 
                     // Endpoints para AGENTE_PUBLICO
-                    authorize.requestMatchers("/agente/**").hasRole("AGENTE_PUBLICO");
+                    authorize.requestMatchers("/agent/**").hasRole("AGENTE_PUBLICO");
 
                     // Endpoints para ADMIN
                     authorize.requestMatchers("/admin/**").hasRole("ADMIN");

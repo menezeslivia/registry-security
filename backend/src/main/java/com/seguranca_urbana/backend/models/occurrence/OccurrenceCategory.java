@@ -12,8 +12,13 @@ import java.util.List;
 @Table(name = "tb_category")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 public class OccurrenceCategory {
+
+    public OccurrenceCategory(String name) {
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +29,5 @@ public class OccurrenceCategory {
 
     @OneToMany(mappedBy = "category")
     private List<Occurrence> occurrences;
-
-    public OccurrenceCategory(String name) {
-        this.name = name;
-    }
 
 }

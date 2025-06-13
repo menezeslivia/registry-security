@@ -46,47 +46,47 @@ public class AdminUserController {
     }
 
     @Operation(
-        summary = "Criar novo usuário",
-        description = "O administrador pode criar um novo usuário do sistema.",
-        requestBody = @RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = UserRequestDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de requisição",
-                    value = """
+            summary = "Criar novo usuário",
+            description = "O administrador pode criar um novo usuário do sistema.",
+            requestBody = @RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserRequestDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de requisição",
+                                    value = """
                     {
                       "username": "maria",
                       "password": "12345678",
-                      "role": "AGENT"
+                      "userRole": "AGENTE_PUBLICO"
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "201",
-                description = "Usuário criado com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = UserResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Usuário criado com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = UserResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 6,
                           "username": "maria",
-                          "role": "AGENT"
+                          "userRole": "AGENTE_PUBLICO"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Dados inválidos"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Dados inválidos"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @PostMapping
     public ResponseEntity<UserResponseDTO> create(
@@ -98,36 +98,36 @@ public class AdminUserController {
     }
 
     @Operation(
-        summary = "Listar todos os usuários",
-        description = "Retorna todos os usuários cadastrados no sistema.",
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Lista de usuários",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = UserResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Listar todos os usuários",
+            description = "Retorna todos os usuários cadastrados no sistema.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de usuários",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = UserResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         [
                           {
                             "id": 6,
                             "username": "maria",
-                            "role": "AGENT"
+                            "userRole": "AGENTE_PUBLICO"
                           },
                           {
                             "id": 7,
                             "username": "joao",
-                            "role": "COMMONER"
+                            "userRole": "CIDADAO"
                           }
                         ]
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> getAll(
@@ -138,33 +138,33 @@ public class AdminUserController {
     }
 
     @Operation(
-        summary = "Buscar usuário por ID",
-        description = "Retorna os detalhes de um usuário específico pelo ID.",
-        parameters = {
-            @Parameter(name = "id", description = "ID do usuário", required = true, example = "6")
-        },
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Usuário encontrado",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = UserResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Buscar usuário por ID",
+            description = "Retorna os detalhes de um usuário específico pelo ID.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID do usuário", required = true, example = "6")
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Usuário encontrado",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = UserResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 6,
                           "username": "maria",
-                          "role": "AGENT"
+                          "userRole": "AGENTE_PUBLICO"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "404", description = "Usuário não encontrado"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "404", description = "Usuário não encontrado"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getById(
@@ -176,33 +176,33 @@ public class AdminUserController {
     }
 
     @Operation(
-        summary = "Buscar usuário por username",
-        description = "Retorna os detalhes de um usuário pesquisando pelo username.",
-        parameters = {
-            @Parameter(name = "username", description = "Username do usuário", required = true, example = "maria")
-        },
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Usuário encontrado",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = UserResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Buscar usuário por username",
+            description = "Retorna os detalhes de um usuário pesquisando pelo username.",
+            parameters = {
+                    @Parameter(name = "username", description = "Username do usuário", required = true, example = "maria")
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Usuário encontrado",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = UserResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 6,
                           "username": "maria",
-                          "role": "AGENT"
+                          "userRole": "AGENTE_PUBLICO"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "404", description = "Usuário não encontrado"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "404", description = "Usuário não encontrado"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping("/username/{username}")
     public ResponseEntity<UserResponseDTO> getByUsername(
@@ -214,51 +214,51 @@ public class AdminUserController {
     }
 
     @Operation(
-        summary = "Atualizar um usuário",
-        description = "Atualiza os dados de um usuário específico.",
-        parameters = {
-            @Parameter(name = "id", description = "ID do usuário", required = true, example = "6")
-        },
-        requestBody = @RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = UserUpdateDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de atualização",
-                    value = """
+            summary = "Atualizar um usuário",
+            description = "Atualiza os dados de um usuário específico.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID do usuário", required = true, example = "6")
+            },
+            requestBody = @RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserUpdateDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de atualização",
+                                    value = """
                     {
                       "username": "maria.silva",
                       "password": "novaSenha123",
-                      "role": "ADMIN"
+                      "userRole": "ADMIN"
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Usuário atualizado com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = UserResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Usuário atualizado com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = UserResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 6,
                           "username": "maria.silva",
-                          "role": "ADMIN"
+                          "userRole": "ADMIN"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Dados inválidos"),
-            @ApiResponse(responseCode = "404", description = "Usuário não encontrado"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Dados inválidos"),
+                    @ApiResponse(responseCode = "404", description = "Usuário não encontrado"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDTO> update(
@@ -271,16 +271,16 @@ public class AdminUserController {
     }
 
     @Operation(
-        summary = "Excluir usuário",
-        description = "Remove definitivamente um usuário do sistema.",
-        parameters = {
-            @Parameter(name = "id", description = "ID do usuário", required = true, example = "6")
-        },
-        responses = {
-            @ApiResponse(responseCode = "204", description = "Usuário removido com sucesso"),
-            @ApiResponse(responseCode = "404", description = "Usuário não encontrado"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+            summary = "Excluir usuário",
+            description = "Remove definitivamente um usuário do sistema.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID do usuário", required = true, example = "6")
+            },
+            responses = {
+                    @ApiResponse(responseCode = "204", description = "Usuário removido com sucesso"),
+                    @ApiResponse(responseCode = "404", description = "Usuário não encontrado"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(

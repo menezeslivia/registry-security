@@ -26,49 +26,46 @@ public class AuthController {
     private final AuthService authService;
 
     @Operation(
-        summary = "Registrar novo usuário",
-        description = "Realiza o cadastro de um novo usuário no sistema.",
-        requestBody = @RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = RegisterRequestDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de registro",
-                    value = """
+            summary = "Registrar novo usuário",
+            description = "Realiza o cadastro de um novo usuário no sistema.",
+            requestBody = @RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RegisterRequestDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de registro",
+                                    value = """
                     {
                       "username": "livia",
                       "password": "12345678",
-                      "role": "ADMIN"
+                      "userRole": "ADMIN"
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Usuário registrado com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = AuthResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta de registro",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Usuário registrado com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = AuthResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta de registro",
+                                            value = """
                         {
                           "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                          "user": {
-                            "id": 5,
-                            "username": "livia",
-                            "role": "ADMIN"
-                          }
+                          "username": "livia",
+                          "userRole": "ADMIN"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Dados inválidos para cadastro")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Dados inválidos para cadastro")
+            }
     )
     @PostMapping("/register")
     public ResponseEntity<AuthResponseDTO> register(
@@ -77,48 +74,45 @@ public class AuthController {
     }
 
     @Operation(
-        summary = "Login de usuário",
-        description = "Realiza o login do usuário no sistema.",
-        requestBody = @RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = LoginRequestDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de login",
-                    value = """
+            summary = "Login de usuário",
+            description = "Realiza o login do usuário no sistema.",
+            requestBody = @RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = LoginRequestDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de login",
+                                    value = """
                     {
                       "username": "livia",
                       "password": "12345678"
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Login realizado com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = AuthResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta de login",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Login realizado com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = AuthResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta de login",
+                                            value = """
                         {
                           "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                          "user": {
-                            "id": 5,
-                            "username": "livia",
-                            "role": "ADMIN"
-                          }
+                          "username": "livia",
+                          "userRole": "ADMIN"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "401", description = "Credenciais inválidas")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "401", description = "Credenciais inválidas")
+            }
     )
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDTO> login(

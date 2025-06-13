@@ -42,18 +42,18 @@ public class AgentPublicOccurrenceController {
     }
 
     @Operation(
-        summary = "Listar todas as ocorrências",
-        description = "Retorna todas as ocorrências registradas no sistema. Disponível apenas para agentes autenticados.",
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Lista de todas as ocorrências",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Listar todas as ocorrências",
+            description = "Retorna todas as ocorrências registradas no sistema. Disponível apenas para agentes autenticados.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de todas as ocorrências",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         [
                           {
                             "id": 10,
@@ -63,16 +63,15 @@ public class AgentPublicOccurrenceController {
                             "status": "ABERTA",
                             "category": "FURTO",
                             "photoUrl": null,
-                            "createdAt": "2025-05-28T12:00:00",
-                            "updatedAt": null
+                            "createdAt": "2025-05-28T12:00:00"
                           }
                         ]
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping
     public ResponseEntity<List<OccurrenceResponseDTO>> getAll(
@@ -83,21 +82,21 @@ public class AgentPublicOccurrenceController {
     }
 
     @Operation(
-        summary = "Consultar ocorrência por ID",
-        description = "Retorna os detalhes de uma ocorrência específica pelo seu ID. Disponível apenas para agentes autenticados.",
-        parameters = {
-            @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "10")
-        },
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Detalhes da ocorrência",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Consultar ocorrência por ID",
+            description = "Retorna os detalhes de uma ocorrência específica pelo seu ID. Disponível apenas para agentes autenticados.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "10")
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Detalhes da ocorrência",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 10,
                           "userId": 2,
@@ -106,16 +105,15 @@ public class AgentPublicOccurrenceController {
                           "status": "ABERTA",
                           "category": "FURTO",
                           "photoUrl": null,
-                          "createdAt": "2025-05-28T12:00:00",
-                          "updatedAt": null
+                          "createdAt": "2025-05-28T12:00:00"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping("/{id}")
     public ResponseEntity<OccurrenceResponseDTO> getById(
@@ -127,21 +125,21 @@ public class AgentPublicOccurrenceController {
     }
 
     @Operation(
-        summary = "Listar ocorrências por endereço",
-        description = "Retorna todas as ocorrências que possuem um endereço específico. Disponível apenas para agentes autenticados.",
-        parameters = {
-            @Parameter(name = "address", description = "Endereço para busca", required = true, example = "Praça Central, 123")
-        },
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Lista de ocorrências para o endereço informado",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Listar ocorrências por endereço",
+            description = "Retorna todas as ocorrências que possuem um endereço específico. Disponível apenas para agentes autenticados.",
+            parameters = {
+                    @Parameter(name = "address", description = "Endereço para busca", required = true, example = "Praça Central, 123")
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de ocorrências para o endereço informado",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         [
                           {
                             "id": 10,
@@ -151,16 +149,15 @@ public class AgentPublicOccurrenceController {
                             "status": "ABERTA",
                             "category": "FURTO",
                             "photoUrl": null,
-                            "createdAt": "2025-05-28T12:00:00",
-                            "updatedAt": null
+                            "createdAt": "2025-05-28T12:00:00"
                           }
                         ]
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping("/address/{address}")
     public ResponseEntity<List<OccurrenceResponseDTO>> getByAddress(
@@ -172,21 +169,21 @@ public class AgentPublicOccurrenceController {
     }
 
     @Operation(
-        summary = "Listar ocorrências por categoria",
-        description = "Retorna todas as ocorrências de uma determinada categoria. Disponível apenas para agentes autenticados.",
-        parameters = {
-            @Parameter(name = "category", description = "Nome da categoria", required = true, example = "FURTO")
-        },
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Lista de ocorrências para a categoria informada",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Listar ocorrências por categoria",
+            description = "Retorna todas as ocorrências de uma determinada categoria. Disponível apenas para agentes autenticados.",
+            parameters = {
+                    @Parameter(name = "category", description = "Nome da categoria", required = true, example = "FURTO")
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de ocorrências para a categoria informada",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         [
                           {
                             "id": 10,
@@ -196,16 +193,15 @@ public class AgentPublicOccurrenceController {
                             "status": "ABERTA",
                             "category": "FURTO",
                             "photoUrl": null,
-                            "createdAt": "2025-05-28T12:00:00",
-                            "updatedAt": null
+                            "createdAt": "2025-05-28T12:00:00"
                           }
                         ]
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping("/category/{category}")
     public ResponseEntity<List<OccurrenceResponseDTO>> getByCategory(
@@ -217,36 +213,36 @@ public class AgentPublicOccurrenceController {
     }
 
     @Operation(
-        summary = "Atualizar status de ocorrência",
-        description = "Permite que o agente atualize o status de uma ocorrência específica.",
-        parameters = {
-            @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "10")
-        },
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = OccurrenceUpdateDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de requisição",
-                    value = """
+            summary = "Atualizar status de ocorrência",
+            description = "Permite que o agente atualize o status de uma ocorrência específica.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "10")
+            },
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = OccurrenceUpdateDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de requisição",
+                                    value = """
                     {
                       "status": "RESOLVIDA"
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Status atualizado com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Status atualizado com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 10,
                           "userId": 2,
@@ -255,17 +251,16 @@ public class AgentPublicOccurrenceController {
                           "status": "RESOLVIDA",
                           "category": "FURTO",
                           "photoUrl": null,
-                          "createdAt": "2025-05-28T12:00:00",
-                          "updatedAt": "2025-05-29T10:30:00"
+                          "createdAt": "2025-05-28T12:00:00"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado"),
-            @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado"),
+                    @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada")
+            }
     )
     @PatchMapping("/{id}/status")
     public ResponseEntity<OccurrenceResponseDTO> updateStatus(

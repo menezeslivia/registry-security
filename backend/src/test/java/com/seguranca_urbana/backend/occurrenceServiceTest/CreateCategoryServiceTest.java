@@ -25,12 +25,14 @@ class CreateCategoryServiceTest {
 
     @Test
     void testExecute_Success() {
-        OccurrenceCategoryRequestDTO dto = new OccurrenceCategoryRequestDTO("FURTO");
+        OccurrenceCategoryRequestDTO dto = new OccurrenceCategoryRequestDTO();
+        dto.setName("FURTO");
+        // Se quiser testar a descrição também:
+        // dto.setDescription("Furto de bens móveis ou imóveis");
+
         when(categoryRepository.existsByName("FURTO")).thenReturn(false);
 
-        // Simule o comportamento do save
-        OccurrenceCategory category = new OccurrenceCategory("FURTO");
-        category.setId(1L);
+        // Simula o comportamento do save para setar o id no objeto salvo
         doAnswer(invocation -> {
             OccurrenceCategory cat = invocation.getArgument(0);
             cat.setId(1L);
@@ -46,7 +48,9 @@ class CreateCategoryServiceTest {
 
     @Test
     void testExecute_CategoryExists_ThrowsException() {
-        OccurrenceCategoryRequestDTO dto = new OccurrenceCategoryRequestDTO("FURTO");
+        OccurrenceCategoryRequestDTO dto = new OccurrenceCategoryRequestDTO();
+        dto.setName("FURTO");
+
         when(categoryRepository.existsByName("FURTO")).thenReturn(true);
 
         assertThrows(IllegalArgumentException.class, () -> service.execute(dto));

@@ -1,5 +1,6 @@
 package com.seguranca_urbana.backend.controllers.admin;
 
+import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceCategoryRequestDTO;
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceRequestDTO;
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceResponseDTO;
 import com.seguranca_urbana.backend.models.dtos.occurrence.OccurrenceUpdateDTO;
@@ -47,19 +48,19 @@ public class AdminOccurrenceController {
     }
 
     @Operation(
-        summary = "Criar ocorrência para um usuário",
-        description = "O administrador pode criar uma ocorrência associada a qualquer usuário (informando o userId).",
-        parameters = {
-            @Parameter(name = "userId", description = "ID do usuário a quem a ocorrência será associada", required = true, example = "2")
-        },
-        requestBody = @RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = OccurrenceRequestDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de requisição",
-                    value = """
+            summary = "Criar ocorrência para um usuário",
+            description = "O administrador pode criar uma ocorrência associada a qualquer usuário (informando o userId).",
+            parameters = {
+                    @Parameter(name = "userId", description = "ID do usuário a quem a ocorrência será associada", required = true, example = "2")
+            },
+            requestBody = @RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = OccurrenceRequestDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de requisição",
+                                    value = """
                     {
                       "categoryId": 1,
                       "description": "Furto de bicicleta na praça central",
@@ -67,19 +68,19 @@ public class AdminOccurrenceController {
                       "photo": null
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "201",
-                description = "Ocorrência criada com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Ocorrência criada com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 20,
                           "userId": 2,
@@ -88,16 +89,15 @@ public class AdminOccurrenceController {
                           "status": "ABERTA",
                           "category": "FURTO",
                           "photoUrl": null,
-                          "createdAt": "2025-05-28T12:00:00",
-                          "updatedAt": null
+                          "createdAt": "2025-05-28T12:00:00"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Dados inválidos"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Dados inválidos"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @PostMapping("/{userId}")
     public ResponseEntity<OccurrenceResponseDTO> create(
@@ -110,18 +110,18 @@ public class AdminOccurrenceController {
     }
 
     @Operation(
-        summary = "Listar todas as ocorrências",
-        description = "Retorna todas as ocorrências cadastradas no sistema.",
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Lista de ocorrências",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Listar todas as ocorrências",
+            description = "Retorna todas as ocorrências cadastradas no sistema.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de ocorrências",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         [
                           {
                             "id": 20,
@@ -131,16 +131,15 @@ public class AdminOccurrenceController {
                             "status": "ABERTA",
                             "category": "FURTO",
                             "photoUrl": null,
-                            "createdAt": "2025-05-28T12:00:00",
-                            "updatedAt": null
+                            "createdAt": "2025-05-28T12:00:00"
                           }
                         ]
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping
     public ResponseEntity<List<OccurrenceResponseDTO>> getAll(
@@ -151,21 +150,21 @@ public class AdminOccurrenceController {
     }
 
     @Operation(
-        summary = "Buscar ocorrência por ID",
-        description = "Retorna os detalhes de uma ocorrência específica pelo ID.",
-        parameters = {
-            @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "20")
-        },
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Detalhes da ocorrência",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Buscar ocorrência por ID",
+            description = "Retorna os detalhes de uma ocorrência específica pelo ID.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "20")
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Detalhes da ocorrência",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 20,
                           "userId": 2,
@@ -174,16 +173,15 @@ public class AdminOccurrenceController {
                           "status": "ABERTA",
                           "category": "FURTO",
                           "photoUrl": null,
-                          "createdAt": "2025-05-28T12:00:00",
-                          "updatedAt": null
+                          "createdAt": "2025-05-28T12:00:00"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping("/{id}")
     public ResponseEntity<OccurrenceResponseDTO> getById(
@@ -195,21 +193,21 @@ public class AdminOccurrenceController {
     }
 
     @Operation(
-        summary = "Buscar ocorrências por endereço",
-        description = "Retorna todas as ocorrências que possuem o endereço informado.",
-        parameters = {
-            @Parameter(name = "address", description = "Endereço", required = true, example = "Praça Central, 123")
-        },
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Lista de ocorrências para o endereço informado",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+            summary = "Buscar ocorrências por endereço",
+            description = "Retorna todas as ocorrências que possuem o endereço informado.",
+            parameters = {
+                    @Parameter(name = "address", description = "Endereço", required = true, example = "Praça Central, 123")
+            },
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de ocorrências para o endereço informado",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         [
                           {
                             "id": 20,
@@ -219,16 +217,15 @@ public class AdminOccurrenceController {
                             "status": "ABERTA",
                             "category": "FURTO",
                             "photoUrl": null,
-                            "createdAt": "2025-05-28T12:00:00",
-                            "updatedAt": null
+                            "createdAt": "2025-05-28T12:00:00"
                           }
                         ]
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @GetMapping("/address/{address}")
     public ResponseEntity<List<OccurrenceResponseDTO>> getByAddress(
@@ -240,37 +237,37 @@ public class AdminOccurrenceController {
     }
 
     @Operation(
-        summary = "Atualizar ocorrência (todos os campos editáveis)",
-        description = "Atualiza os dados de uma ocorrência específica.",
-        parameters = {
-            @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "20")
-        },
-        requestBody = @RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = OccurrenceUpdateDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de atualização",
-                    value = """
+            summary = "Atualizar ocorrência (todos os campos editáveis)",
+            description = "Atualiza os dados de uma ocorrência específica.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "20")
+            },
+            requestBody = @RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = OccurrenceUpdateDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de atualização",
+                                    value = """
                     {
                       "description": "Furto de bicicleta preta",
                       "address": "Praça Central, 123"
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Ocorrência atualizada com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Ocorrência atualizada com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 20,
                           "userId": 2,
@@ -279,17 +276,16 @@ public class AdminOccurrenceController {
                           "status": "ABERTA",
                           "category": "FURTO",
                           "photoUrl": null,
-                          "createdAt": "2025-05-28T12:00:00",
-                          "updatedAt": "2025-05-28T13:45:00"
+                          "createdAt": "2025-05-28T12:00:00"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Dados inválidos"),
-            @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Dados inválidos"),
+                    @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @PutMapping("/{id}")
     public ResponseEntity<OccurrenceResponseDTO> update(
@@ -302,36 +298,36 @@ public class AdminOccurrenceController {
     }
 
     @Operation(
-        summary = "Atualizar status da ocorrência",
-        description = "Atualiza apenas o status de uma ocorrência específica.",
-        parameters = {
-            @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "20")
-        },
-        requestBody = @RequestBody(
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = OccurrenceUpdateDTO.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de alteração de status",
-                    value = """
+            summary = "Atualizar status da ocorrência",
+            description = "Atualiza apenas o status de uma ocorrência específica.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "20")
+            },
+            requestBody = @RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = OccurrenceUpdateDTO.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de alteração de status",
+                                    value = """
                     {
                       "status": "RESOLVIDA"
                     }
                     """
-                )
-            )
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Status atualizado com sucesso",
-                content = @Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
-                    examples = @ExampleObject(
-                        name = "Exemplo de resposta",
-                        value = """
+                            )
+                    )
+            ),
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Status atualizado com sucesso",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = OccurrenceResponseDTO.class),
+                                    examples = @ExampleObject(
+                                            name = "Exemplo de resposta",
+                                            value = """
                         {
                           "id": 20,
                           "userId": 2,
@@ -340,17 +336,16 @@ public class AdminOccurrenceController {
                           "status": "RESOLVIDA",
                           "category": "FURTO",
                           "photoUrl": null,
-                          "createdAt": "2025-05-28T12:00:00",
-                          "updatedAt": "2025-05-28T14:05:00"
+                          "createdAt": "2025-05-28T12:00:00"
                         }
                         """
-                    )
-                )
-            ),
-            @ApiResponse(responseCode = "400", description = "Dados inválidos"),
-            @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+                                    )
+                            )
+                    ),
+                    @ApiResponse(responseCode = "400", description = "Dados inválidos"),
+                    @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @PatchMapping("/{id}/status")
     public ResponseEntity<OccurrenceResponseDTO> updateStatus(
@@ -363,16 +358,16 @@ public class AdminOccurrenceController {
     }
 
     @Operation(
-        summary = "Excluir ocorrência",
-        description = "Remove definitivamente uma ocorrência do sistema.",
-        parameters = {
-            @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "20")
-        },
-        responses = {
-            @ApiResponse(responseCode = "204", description = "Ocorrência removida com sucesso"),
-            @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
-            @ApiResponse(responseCode = "401", description = "Não autorizado")
-        }
+            summary = "Excluir ocorrência",
+            description = "Remove definitivamente uma ocorrência do sistema.",
+            parameters = {
+                    @Parameter(name = "id", description = "ID da ocorrência", required = true, example = "20")
+            },
+            responses = {
+                    @ApiResponse(responseCode = "204", description = "Ocorrência removida com sucesso"),
+                    @ApiResponse(responseCode = "404", description = "Ocorrência não encontrada"),
+                    @ApiResponse(responseCode = "401", description = "Não autorizado")
+            }
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(
@@ -383,4 +378,6 @@ public class AdminOccurrenceController {
         adminDeleteOccurrenceService.execute(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }

@@ -13,7 +13,7 @@ public class UserDTOMapperService {
         return User.builder()
                 .username(dto.username())
                 .password(dto.password())
-                .userRole(UserRole.valueOf(dto.userType()))
+                .userRole(UserRole.valueOf(dto.userRole()))
                 .build();
     }
 
